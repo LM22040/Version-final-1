@@ -1,0 +1,36 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries>
+        <package android:name="com.whatsapp" />
+    </queries>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/Theme.WhatsAppTranslate">
+        <!--  Definición de actividades  -->
+        <activity android:name=".LanguageSelectionActivity" android:label="@string/app_name"> </activity>
+        <activity android:name=".PermissionSettingsActivity" android:label="@string/app_name"> </activity>
+        <activity android:name=".ActivationActivity" android:label="@string/app_name"> </activity>
+        <!--  MainActivity que lanza la aplicación  -->
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!--  Servicios para traducción en segundo plano  -->
+        <service android:name=".TranslationService" android:exported="true">
+           <intent-filter>
+               <action android:name="android.accessibilityservice.AccessibilityService"/>
+           </intent-filter>
+           <meta-data android:name="android.accessibilityservice" android:resource="@xml/translation_service_config"/>
+       </service>
+
+    </application>
+    <!--  Permisos necesarios  -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+</manifest>
